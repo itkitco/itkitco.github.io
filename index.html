@@ -115,12 +115,28 @@
                 opacity: 0;
             }
         }
+        
+        
+        
+        /* Анімація для тексту */
+        @keyframes textColorChange {
+            0%, 100% { color: #fff; }
+            25%, 75% { color: #000; text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
+        }
+        
+        #mainTitle, #subTitle {
+            position: relative;
+            z-index: 2;
+            animation: textColorChange 10s ease-in-out infinite;
+        }
+        
     </style>
+    
 </head>
 <body>
     <header>
-        <h1>Ласкаво просимо до ITKitCo</h1>
-        <p>Освітні послуги та дозвілля для всіх</p>
+        <h1 id="mainTitle">Ласкаво просимо до ITKitCo</h1>
+        <p id="subTitle">Освітні послуги та дозвілля для всіх</p>
         <div class="sun"></div>
     </header>
     <nav>
@@ -145,8 +161,9 @@
         <div id="contact" class="section">
             <h2>Контакти</h2>
             <p>Якщо у вас є запитання або ви хочете записатися на наші курси, будь ласка, зв'яжіться з нами:</p>
-            <p>Email: itkitco@outlook.com</p>
             <p>Телефон: +380 73 787 29 92</p>
+            <p>Email: itkitco@outlook.com</p>
+            <p>Instagram: itkitco</p>
         </div>
     </div>
     <footer>
