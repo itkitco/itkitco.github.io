@@ -6,84 +6,241 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <title>ITKitCo - Освітні послуги та дозвілля</title>
     <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #333;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #fff;
-            color: #000;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
+
         header {
             font-family: 'Raleway', sans-serif;
-            background-color: #000;
-            color: #fff;
-            padding: 1rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             height: 300px;
         }
-        
+
         h1, h2, h3 {
             font-family: 'Raleway', sans-serif;
             font-weight: 700;
         }
-        
+
         nav {
             display: flex;
             justify-content: center;
-            background-color: #fff;
-            border-bottom: 1px solid #000;
+            background-color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
             flex-wrap: wrap;
         }
+
         nav a {
-            color: #000;
+            color: var(--primary-color);
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
             flex: 1 1 auto;
+            transition: all 0.3s ease;
         }
+
         nav a:hover {
-            background-color: #000;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
         }
+
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 2rem;
         }
+
         .section {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--secondary-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
         footer {
-            background-color: #000;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             text-align: center;
             padding: 1rem;
             position: relative;
             bottom: 0;
             width: 100%;
         }
+
         h2 {
-            border-bottom: 1px solid #000;
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5rem;
+            position: relative;
         }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         ul li {
             padding: 0.5rem 0;
+            border-bottom: 1px solid var(--accent-color);
         }
-        
-        #contact a {
-            color: #000;
-            text-decoration: none;
-            border-bottom: 1px solid #000;
-        }
-        
-        #contact a:hover {
-            color: #333;
+
+        ul li:last-child {
             border-bottom: none;
+        }
+
+        #contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: var(--accent-color);
+            border-bottom: none;
+        }
+
+        /* Анімація великого сонця */
+        .sun {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: sunrise 10s ease-in-out infinite;
+        }
+
+        @keyframes sunrise {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+            }
+            50% {
+                bottom: 150px;
+                opacity: 1;
+            }
+            100% {
+                bottom: 400px;
+                opacity: 0;
+            }
+        }
+
+        /* Анімація для тексту */
+        @keyframes textColorChange {
+            0%, 100% { color: var(--secondary-color); }
+            25%, 75% { color: var(--primary-color); text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color); }
+        }
+
+        #mainTitle, #subTitle {
+            position: relative;
+            z-index: 2;
+            animation: textColorChange 10s ease-in-out infinite;
+        }
+
+        #mainTitle {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        #subTitle {
+            font-size: 1.5em;
+            font-weight: 400;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: var(--secondary-color);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--accent-color);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: var(--accent-color);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        #cooperateForm {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cooperateForm label {
+            margin-top: 10px;
+        }
+
+        #cooperateForm input {
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid var(--accent-color);
+        }
+
+        #cooperateForm button[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #cooperateForm button[type="submit"]:hover {
+            background-color: var(--accent-color);
         }
 
         /* Адаптивний дизайн */
@@ -106,146 +263,10 @@
                 width: 100%;
             }
         }
-
-        /* Анімація великого сонця */
-        .sun {
-            position: absolute;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 200px;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: sunrise 10s ease-in-out infinite;
-        }
-
-        @keyframes sunrise {
-            0% {
-                bottom: -100px;
-                opacity: 0;
-            }
-            50% {
-                bottom: 150px;
-                opacity: 1;
-            }
-            100% {
-                bottom: 400px;
-                opacity: 0;
-            }
-        }
-        
-        /* Додаткові стилі для тексту */
-        @keyframes textColorChange {
-            0%, 100% { 
-                color: #fff; 
-                -webkit-text-stroke: 1px #000;
-                text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-            }
-            25%, 75% { 
-                color: #000; 
-                -webkit-text-stroke: 1px #fff;
-                text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
-            }
-        }
-        
-        #mainTitle, #subTitle {
-            position: relative;
-            z-index: 2;
-            animation: textColorChange 10s ease-in-out infinite;
-            -webkit-text-stroke: 1px #000;
-            /*text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
-        }
-        
-        #mainTitle {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-        }
-        
-        #subTitle {
-            font-size: 1.5em;
-            font-weight: 400;
-        }
-        
-        
-        
-        /* Анімація для тексту */
-        @keyframes textColorChange {
-            0%, 100% { color: #fff; }
-            25%, 75% { color: #000; text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
-        }
-        
-        #mainTitle, #subTitle {
-            position: relative;
-            z-index: 2;
-            animation: textColorChange 10s ease-in-out infinite;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-        
-        #cooperateForm {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        #cooperateForm label {
-            margin-top: 10px;
-        }
-        
-        #cooperateForm input {
-            padding: 5px;
-            margin-top: 5px;
-        }
-        
-        #cooperateForm button[type="submit"] {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        
-        #cooperateForm button[type="submit"]:hover {
-            background-color: #333;
-        }        
-        
     </style>
     
     <script>
+        // Ваш JavaScript код залишається без змін
         document.addEventListener('DOMContentLoaded', function() {
             var modal = document.getElementById("cooperateModal");
             var btn = document.getElementById("cooperateBtn");
@@ -266,7 +287,6 @@
                     modal.style.display = "none";
                 }
             }
-            
             form.onsubmit = function(e) {
                 e.preventDefault();
                 var formData = new FormData(form);
@@ -331,7 +351,7 @@
     <footer>
         <p>&copy; 2024 Made by ITKitCo.</p>
     </footer>
-    
+    <!-- Ваш HTML код залишається без змін -->
     <!-- Додайте цей код перед закриваючим тегом </body> -->
     <div id="cooperateModal" class="modal">
         <div class="modal-content">
