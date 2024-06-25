@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <title>ITKitCo - Освітні послуги та дозвілля</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: #fff;
             color: #000;
             margin: 0;
@@ -14,6 +15,7 @@
             line-height: 1.6;
         }
         header {
+            font-family: 'Raleway', sans-serif;
             background-color: #000;
             color: #fff;
             padding: 1rem;
@@ -22,6 +24,12 @@
             overflow: hidden;
             height: 300px;
         }
+        
+        h1, h2, h3 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+        
         nav {
             display: flex;
             justify-content: center;
@@ -116,6 +124,38 @@
             }
         }
         
+        /* Додаткові стилі для тексту */
+        @keyframes textColorChange {
+            0%, 100% { 
+                color: #fff; 
+                -webkit-text-stroke: 1px #000;
+                text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            }
+            25%, 75% { 
+                color: #000; 
+                -webkit-text-stroke: 1px #fff;
+                text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+            }
+        }
+        
+        #mainTitle, #subTitle {
+            position: relative;
+            z-index: 2;
+            animation: textColorChange 10s ease-in-out infinite;
+            -webkit-text-stroke: 1px #000;
+            /*text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+        }
+        
+        #mainTitle {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        #subTitle {
+            font-size: 1.5em;
+            font-weight: 400;
+        }
+        
         
         
         /* Анімація для тексту */
@@ -136,7 +176,7 @@
 <body>
     <header>
         <h1 id="mainTitle">Ласкаво просимо до ITKitCo</h1>
-        <p id="subTitle">Освітні послуги та дозвілля для всіх</p>
+        <h3 id="subTitle">Освітні послуги та дозвілля для всіх</h3>
         <div class="sun"></div>
     </header>
     <nav>
