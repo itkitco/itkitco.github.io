@@ -20,7 +20,7 @@
             padding: 0;
             line-height: 1.6;
         }
-
+        
         header {
             font-family: 'Raleway', sans-serif;
             background-color: var(--primary-color);
@@ -30,6 +30,10 @@
             position: relative;
             overflow: hidden;
             height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1, h2, h3 {
@@ -130,6 +134,8 @@
         }
 
         /* Анімація великого сонця */
+        
+        
         .sun {
             position: absolute;
             bottom: -100px;
@@ -158,25 +164,41 @@
         }
 
         /* Анімація для тексту */
-        @keyframes textColorChange {
-            0%, 100% { color: var(--secondary-color); }
-            25%, 75% { color: var(--primary-color); text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color); }
-        }
+        
 
         #mainTitle, #subTitle {
             position: relative;
             z-index: 2;
-            animation: textColorChange 10s ease-in-out infinite;
+            opacity: 0;
+            transform: translateY(20px);
         }
-
+        
         #mainTitle {
             font-size: 2.5em;
             margin-bottom: 0.5em;
+            animation: fadeInUp 1.5s ease-out forwards;
         }
-
+        
         #subTitle {
             font-size: 1.5em;
             font-weight: 400;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #mainTitle, #subTitle {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+        
+        #mainTitle:hover, #subTitle:hover {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         }
 
         .modal {
