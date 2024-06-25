@@ -170,7 +170,105 @@
             animation: textColorChange 10s ease-in-out infinite;
         }
         
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* Стилі для форми */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            margin-top: 10px;
+        }
+        
+        input {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        
+        button[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+        
+        
     </style>
+    
+    <script>
+        // Отримуємо елементи
+        var modal = document.getElementById("cooperateModal");
+        var btn = document.getElementById("cooperateBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var form = document.getElementById("cooperateForm");
+        
+        // Відкриваємо модальне вікно при кліку на кнопку
+        btn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
+        
+        // Закриваємо модальне вікно при кліку на хрестик
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // Закриваємо модальне вікно при кліку поза ним
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            // Тут ви можете додати код для відправки даних на сервер
+            alert("Дякуємо за заявку! Ми зв'яжемося з вами найближчим часом.");
+            modal.style.display = "none";
+            form.reset();
+        }
+    </script>
     
 </head>
 <body>
@@ -183,6 +281,7 @@
         <a href="#about">Про нас</a>
         <a href="#services">Послуги</a>
         <a href="#contact">Контакти</a>
+        <a href="#" id="cooperateBtn">Хочу співпрацювати!</a>
     </nav>
     <div class="container">
         <div id="about" class="section">
@@ -209,5 +308,26 @@
     <footer>
         <p>&copy; 2024 Made by ITKitCo.</p>
     </footer>
+    
+    <!-- Додайте цей код перед закриваючим тегом </body> -->
+    <div id="cooperateModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Заповніть форму для співпраці</h2>
+            <form id="cooperateForm">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Ел. пошта:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" required>
+                
+                <button type="submit">Приєднатися</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
