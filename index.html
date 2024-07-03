@@ -29,7 +29,7 @@
             padding: 2rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
             height: 300px;
             display: flex;
             flex-direction: column;
@@ -179,14 +179,27 @@
             0% {
                 bottom: -100px;
                 opacity: 0;
+                background-color: var(--secondary-color);
+            }
+            25% {
+                bottom: 50px;
+                opacity: 1;
+                background-color: var(--secondary-color);
             }
             50% {
                 bottom: 150px;
                 opacity: 1;
+                background-color: #FFD700;
+            }
+            75% {
+                bottom: 250px;
+                opacity: 1;
+                background-color: var(--secondary-color);
             }
             100% {
                 bottom: 400px;
                 opacity: 0;
+                background-color: var(--secondary-color);
             }
         }
 
@@ -195,6 +208,7 @@
             z-index: 2;
             opacity: 0;
             transform: translateY(20px);
+            mix-blend-mode: difference;
         }
         
         #mainTitle {
