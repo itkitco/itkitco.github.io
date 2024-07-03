@@ -75,11 +75,35 @@
             padding: 2rem;
             background-color: var(--secondary-color);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         }
 
         .section:hover {
-            transform: translateY(-5px);
+            transform: scale(1.05);
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .section:hover h2 {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .section:hover h2::after {
+            background-color: var(--secondary-color);
+        }
+
+        .section:hover ul li {
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .section:hover #contact a {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .section:hover #contact a:hover {
+            color: var(--accent-color);
         }
 
         footer {
@@ -136,12 +160,9 @@
         
         #contact p i {
             margin-right: 10px;
-            color: #333; /* або будь-який інший колір, який вам подобається */
+            color: #333;
         }
 
-        /* Анімація великого сонця */
-        
-        
         .sun {
             position: absolute;
             bottom: -100px;
@@ -168,9 +189,6 @@
                 opacity: 0;
             }
         }
-
-        /* Анімація для тексту */
-        
 
         #mainTitle, #subTitle {
             position: relative;
@@ -271,7 +289,6 @@
             background-color: var(--accent-color);
         }
 
-        /* Адаптивний дизайн */
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -294,7 +311,6 @@
     </style>
     
     <script>
-        // Ваш JavaScript код залишається без змін
         document.addEventListener('DOMContentLoaded', function() {
             var modal = document.getElementById("cooperateModal");
             var btn = document.getElementById("cooperateBtn");
@@ -379,8 +395,6 @@
     <footer>
         <p>&copy; 2024 Made by ITKitCo.</p>
     </footer>
-    <!-- Ваш HTML код залишається без змін -->
-    <!-- Додайте цей код перед закриваючим тегом </body> -->
     <div id="cooperateModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
